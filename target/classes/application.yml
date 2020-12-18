@@ -1,0 +1,4 @@
+
+addon.base-url: https://b0a7154d8b8d.ngrok.io
+
+logging.level.com.atlassian.connect.spring: DEBUG

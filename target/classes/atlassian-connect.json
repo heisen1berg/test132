@@ -1,0 +1,29 @@
+{
+  "key": "atlassian-connect-spring-boot-sample-ajax",
+  "baseUrl": "${addon.base-url}",
+  "name": "Atlassian Connect Spring Boot AJAX Sample",
+  "authentication": {
+    "type": "jwt"
+  },
+  "lifecycle": {
+    "installed": "/installed",
+    "uninstalled": "/uninstalled"
+  },
+  "modules": {
+    "generalPages": [
+      {
+        "key": "ajax-page",
+        "location": "system.top.navigation.bar",
+        "name": {
+          "value": "AJAX Sample"
+        },
+        "url": "/iframe",
+        "conditions": [
+          {
+            "condition": "user_is_logged_in"
+          }
+        ]
+      }
+    ]
+  }
+}

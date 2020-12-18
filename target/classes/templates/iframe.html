@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Iframe</title>
+    <meta charset="UTF-8"/>
+    <script th:src="@{${atlassianConnectAllJsUrl}}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+
+    <meta name="token" th:content="${atlassianConnectToken}"/>
+    <script>
+    $(document).ready(function(){
+        $("#hello").click(function(){
+            $.ajax({
+              url: "data",
+              beforeSend: function (request) {
+                  var token = $('meta[name="token"]').attr("content");
+                  request.setRequestHeader("Authorization", "JWT " + token);
+              }
+            }).done(function(data) {
+               alert(JSON.stringify(data, null, '\t'));
+            });
+        });
+    });
+    </script>
+</head>
+<body>
+<div class="ac-content">
+    <button id="hello">Hello AJAX!</button>
+    <a th:href="@{/data(jwt=${atlassianConnectToken})}">Hello link!</a>
+</div>
+</body>
+</html>
